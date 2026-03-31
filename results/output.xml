@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.2 on win32)" generated="2026-03-31T10:28:08.517220" rpa="false" schemaversion="5">
+<suite id="s1" name="Robot Aulas" source="C:\Users\Admin\Desktop\Robot Aulas">
+<suite id="s1-s1" name="Projeto travel" source="C:\Users\Admin\Desktop\Robot Aulas\Projeto_travel">
+<suite id="s1-s1-s1" name="Site Viagem" source="C:\Users\Admin\Desktop\Robot Aulas\Projeto_travel\site_viagem.robot">
+<test id="s1-s1-s1-t1" name="Scenario TC01: Cadastro com sucesso" line="120">
+<kw name="que eu acesse o site PHP Travels" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-31T10:28:08.825752" level="INFO">Opening browser 'Chrome' to base url 'https://www.phptravels.net/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-31T10:28:08.825329" elapsed="5.827412"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-31T10:28:14.653230" elapsed="0.066005"/>
+</kw>
+<status status="PASS" start="2026-03-31T10:28:08.824266" elapsed="5.895243"/>
+</kw>
+<kw name="When eu acesso a tela de cadastro">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${SINGUP_DROPDOWN}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-31T10:28:14.721248" elapsed="0.636994"/>
+</kw>
+<kw name="Mouse Over" owner="SeleniumLibrary">
+<msg time="2026-03-31T10:28:15.358963" level="INFO">Simulating Mouse Over on element '//button[@class="btn light flex items-center gap-1.5"]'.</msg>
+<arg>${SINGUP_DROPDOWN}</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<status status="PASS" start="2026-03-31T10:28:15.358484" elapsed="0.331996"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-03-31T10:28:15.691442" level="INFO">Executing JavaScript:
+document.querySelector("a[href*='signup']").click()
+Without any arguments.</msg>
+<arg>document.querySelector("a[href*='signup']").click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-03-31T10:28:15.690835" elapsed="0.020591"/>
+</kw>
+<status status="PASS" start="2026-03-31T10:28:14.720485" elapsed="0.991167"/>
+</kw>
+<kw name="And informo o e-mail de cadastro &quot;teste@gmail.com&quot;">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${SINGUP_EMAIL}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-31T10:28:15.712579" elapsed="0.762985"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-31T10:28:16.476159" level="INFO">Typing text 'marcus.vinicius.amoglia09@gmail.com' into text field '//input[@type="email"]'.</msg>
+<arg>${SINGUP_EMAIL}</arg>
+<arg>${Email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-31T10:28:16.475792" elapsed="0.098914"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-03-31T10:28:19.575844" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-03-31T10:28:16.574952" elapsed="3.001278"/>
+</kw>
+<status status="PASS" start="2026-03-31T10:28:15.712095" elapsed="3.864423"/>
+</kw>
+<kw name="And eu preencho os campos de nome &quot;John&quot; e sobrenome &quot;Wick&quot;">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-03-31T10:28:22.578463" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-03-31T10:28:19.577656" elapsed="3.001092"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-31T10:28:22.579464" level="INFO">Typing text 'John' into text field '//input[@id="first_name"]'.</msg>
+<arg>${NAME_INPUT}</arg>
+<arg>${Nome}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-31T10:28:22.578960" elapsed="0.081093"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-03-31T10:28:25.660903" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-03-31T10:28:22.660350" elapsed="3.000828"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-31T10:28:25.661846" level="INFO">Typing text 'Wick' into text field '//input[@id="last_name"]'.</msg>
+<arg>${LAST_NAME_INPUT}</arg>
+<arg>${Sobrenome}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-31T10:28:25.661382" elapsed="0.068987"/>
+</kw>
+<status status="PASS" start="2026-03-31T10:28:19.577089" elapsed="6.153499"/>
+</kw>
+<kw name="And eu preencho a senha">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-31T10:28:25.731907" level="INFO">Typing text '123456789' into text field '//input[@id="password"]'.</msg>
+<arg>${SINGUP_PASSWORD}</arg>
+<arg>${Senha}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-31T10:28:25.731534" elapsed="0.164445"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-03-31T10:28:27.897096" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-03-31T10:28:25.896236" elapsed="2.001135"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-31T10:28:27.898000" level="INFO">Typing text '123456789' into text field '//input[@id="confirm_password"]'.</msg>
+<arg>${SINGUP_CONFIPASSWORD}</arg>
+<arg>${Senha}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-31T10:28:27.897572" elapsed="0.104474"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-03-31T10:28:30.003438" level="INFO">Slept 2 seconds.</msg>
+<arg>2S</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-03-31T10:28:28.002302" elapsed="2.001414"/>
+</kw>
+<status status="PASS" start="2026-03-31T10:28:25.731027" elapsed="4.272847"/>
+</kw>
+<kw name="And resolvo o desafio matemático de segurança">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2026-03-31T10:28:30.022824" level="INFO">${desafio} = Security Check: What is 28 - 9? *</msg>
+<var>${desafio}</var>
+<arg>${SINGUP_CHALLENGE}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-31T10:28:30.004723" elapsed="0.018407"/>
+</kw>
+<kw name="Resolver Desafio Matematico" owner="logica">
+<msg time="2026-03-31T10:28:30.024145" level="INFO">${resposta} = 0</msg>
+<var>${resposta}</var>
+<arg>${desafio}</arg>
+<status status="PASS" start="2026-03-31T10:28:30.023436" elapsed="0.000969"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-31T10:28:30.025154" level="INFO">Typing text '0' into text field '//input[@id="captcha_answer"]'.</msg>
+<arg>${SINGUP_CAPTCHA}</arg>
+<arg>${resposta}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-31T10:28:30.024629" elapsed="0.081605"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-03-31T10:28:32.107174" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-03-31T10:28:30.106466" elapsed="2.000969"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-03-31T10:28:32.108077" level="INFO">Clicking element '//div[@class="checkbox-custom"]'.</msg>
+<arg>${BUTTON_TERMS_OF_SERVICE}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-31T10:28:32.107641" elapsed="0.049815"/>
+</kw>
+<status status="PASS" start="2026-03-31T10:28:30.004280" elapsed="2.153409"/>
+</kw>
+<kw name="And clico no botão para finalizar o cadastro">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-31T10:28:32.159416" level="INFO">Clicking button '//button[@class="btn emerald w-full relative"]'.</msg>
+<arg>${BUTTON_CREATE_ACCOUNT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-31T10:28:32.158786" elapsed="0.067548"/>
+</kw>
+<status status="PASS" start="2026-03-31T10:28:32.158132" elapsed="0.068452"/>
+</kw>
+<kw name="Then o sistema deve exibir a mensagem de sucesso do registro">
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-03-31T10:28:33.215649" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-55.png"&gt;&lt;img src="selenium-screenshot-55.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-03-31T10:28:33.215999" level="FAIL">Element with locator '//div[@class="alert-success"]' not found.</msg>
+<var>${sucesso}</var>
+<arg>${SUCESS_MESSAGE}</arg>
+<arg>Registration successful!</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="FAIL" start="2026-03-31T10:28:32.227501" elapsed="0.995809">Element with locator '//div[@class="alert-success"]' not found.</status>
+</kw>
+<if>
+<branch type="IF" condition="'${sucesso}' == 'PASS'">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Sucesso!!</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-03-31T10:28:33.223775" elapsed="0.000108"/>
+</kw>
+<status status="NOT RUN" start="2026-03-31T10:28:33.223557" elapsed="0.000412"/>
+</branch>
+<branch type="ELSE">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" start="2026-03-31T10:28:33.224195" elapsed="0.000098"/>
+</kw>
+<status status="NOT RUN" start="2026-03-31T10:28:33.224041" elapsed="0.000331"/>
+</branch>
+<status status="NOT RUN" start="2026-03-31T10:28:33.223517" elapsed="0.000910"/>
+</if>
+<status status="FAIL" start="2026-03-31T10:28:32.227053" elapsed="0.997492">Element with locator '//div[@class="alert-success"]' not found.</status>
+</kw>
+<status status="FAIL" start="2026-03-31T10:28:08.820504" elapsed="24.404412">Element with locator '//div[@class="alert-success"]' not found.</status>
+</test>
+<status status="FAIL" start="2026-03-31T10:28:08.569402" elapsed="24.666260"/>
+</suite>
+<status status="FAIL" start="2026-03-31T10:28:08.564884" elapsed="24.674758"/>
+</suite>
+<status status="FAIL" start="2026-03-31T10:28:08.523260" elapsed="24.721093"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Robot Aulas" id="s1" pass="0" fail="1" skip="0">Robot Aulas</stat>
+<stat name="Projeto travel" id="s1-s1" pass="0" fail="1" skip="0">Robot Aulas.Projeto travel</stat>
+<stat name="Site Viagem" id="s1-s1-s1" pass="0" fail="1" skip="0">Robot Aulas.Projeto travel.Site Viagem</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
