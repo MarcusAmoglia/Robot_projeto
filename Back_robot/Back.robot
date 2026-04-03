@@ -4,17 +4,25 @@ Library    Collections
 
 *** Variables ***
 ${API_URL}      https://jsonplaceholder.typicode.com
-${SESSAO}       sessao_independente  
+${SESSAO}       Sessao_testes  
 
 # Endpoints
 ${ENDPOINT_USERS}    /users/1
 ${ENDPOINT_POSTS}    /posts
 
+*** Keywords ***
+Faz a busca
+    
+
 *** Test Cases ***
 
-Desafio 01: Buscar Usuario Bret (GET)
-    [Documentation]    Valida se o usuário ID 1 tem o username 'Bret'
+Scenario TC01(Back): Buscar Usuario Bret (GET)
     [Setup]    Create Session    ${SESSAO}    url=${API_URL}    verify=True
+
+    When    Faz a busca
+    And     Acho o usuario Bret
+    Then    O Status deve ser igual a 200
+         
 
     # Faz a busca
     ${response}=    GET On Session    ${SESSAO}    ${ENDPOINT_USERS}
@@ -71,3 +79,15 @@ Desafio 03: Atualizar o Post ID 1 (PUT)
     # Use o Should Be Equal aqui
     Should Be Equal    ${json_resposta}[title]    Post Editado
     Log To Console    \n[PASS] Post 1 atualizado com sucesso!
+
+    
+Desafio 04: Get 
+    [Setup]    Create Session    ${SESSAO}    url=${API_URL}    verify=true
+#1. Crie um dicionário com a chave "userId" e o valor "1" para usar como filtro (Query Param)
+    ${dicio}    Create Dictionary    userid=1    
+#2. Faça a requisição GET no endpoint "/posts" passando o dicionário de filtros no argumento "params"
+    ${resposta}    GET On Session    ${SESSAO}    ${ENDPOINT_POSTS}
+#3. Valide se o Status Code foi 200 e se a lista retornada contém exatamente 10 itens
+    ${resposta}    Status Should Be    200
+    ${resposta}    Dictionary Should Contain Value    value=10    
+    
