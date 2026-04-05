@@ -1,46 +1,89 @@
-🤖 **Automação de Testes: Robot Framework (E2E & API)**
+# 🤖 AUTOMAÇÃO DE TESTES: ROBOT FRAMEWORK (E2E & API)
 
-Este projeto consolida automações de testes cobrindo todo o ciclo de uma aplicação. O foco principal é demonstrar a aplicação de Engenharia de Software no QA, utilizando o **Robot Framework** integrado com **Python** para resolver desafios de interface e validação de dados em APIs REST.
+## 🚀 VISÃO GERAL DO PROJETO
 
----
+Este projeto consolida automações de testes cobrindo **todo o ciclo de uma aplicação**, com foco em demonstrar na prática a aplicação de **Engenharia de Software voltada para QA**.
 
-🧠 **Diferencial Técnico: Integração Robot + Python**
-
-O ponto alto do projeto é a superação de desafios de segurança no front-end, como **Captcha Matemático**.
-
-Em vez de usar apenas comandos básicos, foi desenvolvida uma library customizada em Python. O Robot captura o desafio textual da tela, e o script Python processa a lógica aritmética para retornar o resultado correto automaticamente.
-
-Isso demonstra:
-
-- Capacidade de estender o framework com código puro  
-- Uso de **Expressões Regulares (Regex)** para tratamento de strings  
-- Domínio de lógica de programação aplicada à automação  
+A solução utiliza o **Robot Framework** integrado com **Python**, permitindo lidar com cenários mais complexos tanto em **interfaces web (E2E)** quanto em **validação de APIs REST**.
 
 ---
 
-🛠️ **Tecnologias e Bibliotecas**
+## 🧠 DIFERENCIAL TÉCNICO: INTEGRAÇÃO ROBOT + PYTHON
 
-- **Linguagem:** Python 3.x  
-- **Framework:** Robot Framework  
+O grande destaque do projeto é a resolução de desafios reais de automação, como **Captcha Matemático no front-end**.
 
-**Principais bibliotecas:**
+Em vez de depender apenas de keywords padrão, foi desenvolvida uma **library customizada em Python**, onde:
 
-- SeleniumLibrary → Automação de interface web  
-- RequestsLibrary → Testes de integração de API  
-- Collections → Manipulação de listas e dicionários  
+- O Robot captura o texto do desafio diretamente da interface  
+- O Python processa a lógica matemática  
+- O resultado é retornado automaticamente para o fluxo de teste  
+
+### 💡 Isso demonstra:
+
+- Extensão do framework com código puro  
+- Uso de **Expressões Regulares (Regex)** para tratamento de dados  
+- Aplicação prática de **lógica de programação na automação**  
+- Capacidade de resolver problemas reais fora do "happy path"  
 
 ---
 
-🎯 **Conceitos e Práticas Aplicadas**
+## 🛠️ TECNOLOGIAS E BIBLIOTECAS
 
-**Automação Web (Front-end)**
+### 🔹 Linguagem
+- **Python 3.x**
 
-- BDD (Gherkin) → Escrita de cenários em Português para clareza de negócio  
-- Sincronização → Uso de `Wait Until...` para garantir estabilidade (anti-flakiness)  
-- Mapeamento de elementos → Uso de XPath e ID  
+### 🔹 Framework
+- **Robot Framework**
 
-**Automação de API (Back-end)**
+### 🔹 Principais Bibliotecas
 
-- Ciclo CRUD → Validação de GET, POST, PUT e DELETE  
-- Data Validation → Verificação de status codes e integridade de JSON  
-- Filtros → Uso de parâmetros (Query Strings)  
+- **SeleniumLibrary**  
+  → Automação de interface web (interação com elementos, cliques, inputs)
+
+- **RequestsLibrary**  
+  → Testes de integração e validação de APIs REST
+
+- **Collections**  
+  → Manipulação avançada de listas e dicionários dentro dos testes
+
+---
+
+## 🎯 CONCEITOS E PRÁTICAS APLICADAS
+
+### 🌐 AUTOMAÇÃO WEB (FRONT-END)
+
+- **BDD (Gherkin)**  
+  → Escrita de cenários em Português, aproximando testes da regra de negócio  
+
+- **Sincronização (Anti-flakiness)**  
+  → Uso de `Wait Until...` para garantir estabilidade e confiabilidade  
+
+- **Mapeamento de Elementos**  
+  → Estratégias com **XPath** e **ID** para localização precisa  
+
+- **Fluxos E2E**  
+  → Simulação completa da jornada do usuário  
+
+---
+
+### 🔌 AUTOMAÇÃO DE API (BACK-END)
+
+- **Ciclo CRUD completo**  
+  → Validação de **GET, POST, PUT e DELETE**  
+
+- **Validação de Dados (Data Validation)**  
+  → Conferência de **status codes** e estrutura de respostas JSON  
+
+- **Filtros e Query Params**  
+  → Testes com parâmetros dinâmicos em requisições  
+
+- **Validação de Integridade**  
+  → Garantia de consistência dos dados retornados pela API  
+
+---
+
+## 🏁 CONCLUSÃO
+
+Este projeto não é apenas uma automação simples — ele demonstra **maturidade técnica em QA**, indo além do básico ao integrar lógica de programação com automação.
+
+O resultado é uma solução mais **robusta, inteligente e preparada para cenários reais de mercado**.
