@@ -1,0 +1,162 @@
+📚 ROBOT FRAMEWORK + API - GUIA DE CONSULTA RÁPIDA
+🔧 COMANDOS BÁSICOS
+
+Criar Sessão
+text
+Create Session    ${NOME}    url=${URL}    verify=True
+
+Requisições HTTP
+GET (buscar)
+
+text
+GET On Session    ${SESSAO}    /endpoint
+GET com filtro (jeito 1)
+
+text
+GET On Session    ${SESSAO}    /endpoint?chave=valor
+GET com filtro (jeito 2)
+
+text
+${params}    Create Dictionary    chave=valor
+GET On Session    ${SESSAO}    /endpoint    params=${params}
+POST (criar)
+
+text
+${body}    Create Dictionary    campo=valor    campo2=valor2
+POST On Session    ${SESSAO}    /endpoint    json=${body}
+PUT (atualizar tudo)
+
+text
+${body}    Create Dictionary    id=1    campo=novo_valor
+PUT On Session    ${SESSAO}    /endpoint/1    json=${body}
+PATCH (atualizar parcial)
+
+text
+${body}    Create Dictionary    campo=novo_valor
+PATCH On Session    ${SESSAO}    /endpoint/1    json=${body}
+DELETE (deletar)
+
+text
+DELETE On Session    ${SESSAO}    /endpoint/1
+📦 COMPARTILHAR VARIÁVEIS
+text
+Set Test Variable    ${variavel}    # Dura até fim do test case
+Set Suite Variable    ${variavel}    # Dura até fim da suite
+Set Global Variable    ${variavel}   # Dura até fim da execução
+Padrão dentro da keyword:
+
+text
+${response}    GET On Session    ${SESSAO}    /endpoint
+${json}    Set Variable    ${response.json()}
+Set Test Variable    ${response}
+Set Test Variable    ${json}
+✅ VALIDAÇÕES
+Status HTTP
+text
+Status Should Be    200    ${response}
+Status Should Be    201    ${response}
+Status Should Be    404    ${response}
+Comparações
+text
+Should Be Equal    ${valor}    ${esperado}    # strings
+Should Be Equal As Integers    ${valor}    ${esperado}    # números
+Should Be Equal As Strings    ${valor}    ${esperado}    # converte pra string
+Listas
+text
+${tamanho}    Get Length    ${lista}
+Should Be Equal As Integers    ${tamanho}    10
+Dicionários
+text
+Dictionary Should Contain Key    ${dicionario}    chave
+Laço em lista
+text
+FOR    ${item}    IN    @{lista}
+    Should Be Equal    ${item}[campo]    ${esperado}
+END
+🎯 PADRÃO BDD (Gherkin)
+text
+*** Test Cases ***
+Nome do Cenário
+    When Acao que eu faco
+    Then Resultado esperado
+    And Outra validacao
+⚠️ REGRA DE OURO: When + APENAS 1 ESPAÇO + nome da keyword
+
+Correto	Errado
+When Faz algo	When Faz algo
+🚨 ERROS COMUNS E SOLUÇÕES
+Erro	Causa	Solução
+AttributeError: startswith	Dicionário no lugar do endpoint	Colocar string (URL) no lugar certo
+Keyword 'When...' not found	Espaço/TAB extra depois do When	Deixar APENAS 1 espaço
+Variable '${x}' not found	Esqueceu de compartilhar	Usar Set Test Variable
+Status Should Be com erro	Fez ${var} Status Should Be	Remover ${var} =
+📍 ENDPOINTS DO JSONPLACEHOLDER
+Endpoint	Método	O que faz
+/users/1	GET	Busca usuário ID 1
+/posts	POST	Cria novo post (retorna ID 101)
+/posts/1	PUT	Substitui post ID 1 inteiro
+/posts/1	PATCH	Altera só alguns campos do post ID 1
+/posts?userId=1	GET	Busca posts do usuário ID 1
+/posts/1	DELETE	Deleta post ID 1
+📊 CÓDIGOS DE STATUS
+Status	Significado
+200	OK (GET, PUT, PATCH, DELETE funcionaram)
+201	Criado (POST funcionou)
+400	Requisição ruim (você errou algo)
+404	Não encontrado
+500	Erro no servidor (não é sua culpa)
+🧠 CONCEITOS IMPORTANTES
+Diferença entre PUT e PATCH
+PUT: Substitui o recurso INTEIRO. Precisa enviar todos os campos.
+
+PATCH: Altera APENAS os campos enviados.
+
+Query String (filtro)
+Aparece na URL depois do ?
+
+Exemplo: /posts?userId=1 (filtra posts do usuário 1)
+
+Escopo de variáveis
+Variável criada dentro de uma keyword MORRE nela
+
+Para usar em outra keyword → precisa de Set Test Variable
+
+Métodos HTTP
+Método	Ação
+GET	Ler/buscar
+POST	Criar
+PUT	Substituir tudo
+PATCH	Alterar parte
+DELETE	Remover
+🔄 FLUXO PADRÃO DE UM TESTE
+robot
+*** Settings ***
+Library    RequestsLibrary
+Library    Collections
+Test Setup    Criar_sessao
+
+*** Variables ***
+${SESSAO}    Nome
+${API}        https://url.com
+
+*** Keywords ***
+Criar_sessao
+    Create Session    ${SESSAO}    url=${API}    verify=True
+
+When Faco alguma coisa
+    ${response}    GET On Session    ${SESSAO}    /endpoint
+    ${json}    Set Variable    ${response.json()}
+    Set Test Variable    ${response}
+    Set Test Variable    ${json}
+
+Then Valido status
+    Status Should Be    200    ${response}
+
+And Valido dado
+    Should Be Equal    ${json}[campo]    valor_esperado
+
+*** Test Cases ***
+Cenario 1
+    When Faco alguma coisa
+    Then Valido status
+    And Valido dado

@@ -1,0 +1,76 @@
+1️⃣ MÉTODOS HTTP (o que cada um faz)
+
+Método	Ação	Analogia
+
+GET	Buscar/ler dados	Perguntar "me mostra isso"
+POST	Criar algo novo	"Faz um novo registro"
+PUT	Atualizar TUDO	"Troca o documento inteiro"
+PATCH	Atualizar PARTE	"Corrige só esse campo"
+DELETE	Remover	"Apaga isso"
+
+
+2️⃣ ENDPOINTS QUE VOCÊ USOU
+
+Endpoint	O que faz	Método
+
+/users/1	Busca o usuário com ID 1	GET
+/posts	Cria um novo post	POST
+/posts/1	Altera o post ID 1	PUT
+/posts?userId=1	Busca posts do usuário 1	GET
+/posts/1	Deleta o post ID 1	DELETE
+
+3️⃣ CÓDIGOS DE STATUS (os mais importantes)
+
+Status	Significado	Quando acontece
+
+200	OK (sucesso)	GET, PUT, PATCH, DELETE funcionaram
+201	Criado	POST funcionou
+400	Requisição ruim	Você mandou algo errado
+404	Não encontrado	Endpoint ou ID não existe
+500	Erro no servidor	A API quebrou (não é sua culpa)
+
+4️⃣ PADRÃO BDD (Gherkin)
+
+Palavra	Significado	O que representa
+
+When	Ação	"Quando eu faço algo"
+Then	Resultado	"Então acontece isso"
+And	Continuação	"E também isso"
+Regra de OURO: When + UM espaço + nome da keyword. Se tiver TAB ou múltiplos espaços → quebra!
+
+5️⃣ COMPARTILHAMENTO DE VARIÁVEIS
+
+Tipo	Escopo	Dura até
+
+Set Test Variable	Test case atual	Fim do cenário
+Set Suite Variable	Todos os testes	Fim da execução
+Set Global Variable	Tudo	Fim da execução
+Por que precisa? Variáveis criadas dentro de uma keyword MORREM nela. Para usar em outra, precisa compartilhar.
+
+6️⃣ VALIDAÇÕES MAIS COMUNS
+
+O que validar	Como pensar
+
+Status da requisição	"Deu certo? Status 200/201?"
+Valor no JSON	"O nome é Bret mesmo?"
+Tamanho da lista	"Voltaram 10 posts?"
+Tipo do dado	"O ID é número?"
+
+
+7️⃣ FILTROS EM GET (Query Strings)
+
+Quando você quer buscar posts APENAS de um usuário específico:
+
+?userId=1 na URL significa "filtra só quem tem userId igual a 1"
+
+Exemplo mental: "Me mostra só os posts do João" → ?autor=João
+
+
+8️⃣ ERROS MAIS COMUNS (e por que acontecem)
+
+Erro	Causa
+
+AttributeError: startswith	Você colocou dicionário onde era pra ser URL
+Keyword not found	Você colocou TAB depois do When
+Variável not found	Esqueceu de compartilhar com Set Test Variable
+Status 500	Problema na API, não no seu código
