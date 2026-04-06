@@ -1,1 +1,14 @@
+# Robot Framework Results
 results/
+log.html
+report.html
+output.xml
+
+# Python Cache
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# IDEs
+.vscode/
+.idea/
