@@ -1,6 +1,7 @@
 *** Settings ***
 Library    SeleniumLibrary
 Library    logica.py
+Library    String
 Test Setup    que eu acesse o site PHP Travels
 
 *** Variables ***
@@ -30,7 +31,7 @@ ${Confirm_button}    //button[@class="btn w-full"]
 #Dados usuario
 ${Nome}     John
 ${Sobrenome}    Wick
-${Email}    teste@gmail.com
+${Email}    teste2@gmail.com
 ${Senha}    123456789
 
 #Sem categoria
@@ -40,6 +41,10 @@ ${VERIFY_EMAIL}    //div[@class="space-y-3"]
 *** Keywords ***
 
 #Cadastro 
+gerar um email aleatorio
+    ${prefixo}    Generate Random String    8    [LOWER][NUMBERS]
+    Set Global Variable    ${Email}    teste_${prefixo}@gmail.com
+    Log To Console    Email gerado no teste ${Email}
 
 que eu acesse o site PHP Travels
     Open Browser    ${url}    ${browser}
@@ -79,7 +84,8 @@ clico no botão para finalizar o cadastro
     Click Button    ${BUTTON_CREATE_ACCOUNT}
 
 o sistema deve exibir a mensagem de sucesso do registro
-    ${sucesso}    Element Should Contain    ${SUCESS_MESSAGE}    Registration successful! 
+    Wait Until Element Is Visible    ${SUCESS_MESSAGE}
+    ${sucesso}    Element Should Contain    ${SUCESS_MESSAGE}    Registration successful!
     IF    '${sucesso}' == 'PASS'
         Log To Console    Sucesso!!
     ELSE    
@@ -101,6 +107,7 @@ clico no botão de login
     Wait Until Element Is Visible    ${Confirm_button}
     Click Button    ${Confirm_button}
 o sistema deve exibir um pedido de confirmação de E-mail
+    Wait Until Element Is Visible    ${VERIFY_EMAIL}
     ${verifique_email}    Element Should Contain    ${VERIFY_EMAIL}    Please verify your email address before logging in.
     IF    '${verifique_email}' == 'PASS'
         Log To Console    Sucesso!!
@@ -118,6 +125,7 @@ o sistema deve exibir um pedido de confirmação de E-mail
 # Feature: Gerenciamento de Usuário no PHP Travels
 #Prática de front
 Scenario TC01(Front): Cadastro com sucesso
+        gerar um email aleatorio
         When eu acesso a tela de cadastro
         And informo o e-mail de cadastro "teste@gmail.com"
         And eu preencho os campos de nome "John" e sobrenome "Wick"

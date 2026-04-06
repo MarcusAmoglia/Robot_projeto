@@ -17,6 +17,14 @@ ${END_PUT}    /posts/1
 #Dados
 ${NAME}    Bret
 
+#Variaveis para tirar o erro 
+${json}           ${None}
+${search_user}    ${None}
+${post_user}      ${None}
+${put_id}         ${None}
+${delete}         ${None}
+${search_id}      ${None}
+
 *** Keywords ***
 Criar_sessao_API
     Create Session    ${SESSAO}    url=${API}    verify=True

@@ -12,6 +12,10 @@ ${POSTS}    /posts
 ${POST_USER1}    /posts?userId=1
 ${DATA_USER1}    /users/1
 
+#Remover erros
+${busca_user1}    ${None}
+${json}    ${None}
+
 *** Keywords ***
 Criar sessão api
     Create Session    ${SESSAO}    url=${API}    verify=True
